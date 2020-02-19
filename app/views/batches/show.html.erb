@@ -1,0 +1,27 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @batch.banner_url %>');">
+  <div class="container">
+    <h1><%= @batch.name %><h1>
+    <a class="btn btn-flat" href="#">Join Us</a>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_batch_path(@batch) %> |
+<%= link_to 'Back', batches_path %>
+
+
+<div class="cards">
+
+  <% @batch.students.each do |student| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= student.image_url %>')">
+    <%= student.name %>
+    <%= link_to "Kill", student_path(student), method: :delete %>
+    </div>
+  <% end %>
+
+</div>
+
+<%= simple_form_for [@batch, @student] do |f|%>
+  <%= f.input :name, placeholder: 'Sean' %>
+  <%= f.input :image_url %>
+  <%= f.submit %>
+<% end %>
