@@ -1,7 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @batch.banner_url %>');">
   <div class="container">
     <h1><%= @batch.name %><h1>
-    <a class="btn btn-flat" href="#">Join Us</a>
+    <a class="btn btn-primary" href="#">Join Us</a>
   </div>
 </div>
 
@@ -28,11 +28,13 @@
 
     </div>
 
-    <%= simple_form_for [@batch, @student] do |f|%>
+    <%= simple_form_for([@batch, @student]) do |f|%>
       <%= f.input :name, placeholder: 'Sean' %>
       <%= f.input :image_url %>
-      <%= f.submit %>
+      <%= f.submit 'Save the Student!', class: 'btn btn-dark' %>
     <% end %>
   </div>
 </div>
+
+<br>
 
